@@ -1,1 +1,7 @@
-
+.CurrentWeather__container {
+  margin-top: 1rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: rgba(23,43,99,0.26) 0 7px 42px;
+  padding: 1rem 1rem;
+}

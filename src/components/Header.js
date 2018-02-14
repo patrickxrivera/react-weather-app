@@ -10,9 +10,9 @@ class Header extends React.Component {
             <li className='Header__date'>February 14th, 2018</li>
           </div>
           <div className='Header__weather-options-area'>
-            <li>Current</li>
-            <li>7-hour</li>
-            <li>10-day</li>
+            <li className='on'>Current</li>
+            <li className='off'>7-hour</li>
+            <li className='off'>10-day</li>
           </div>
         </div>
       </div>
