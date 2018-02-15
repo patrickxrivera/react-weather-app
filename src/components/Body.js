@@ -18,11 +18,13 @@ class Body extends React.Component {
       clouds: null,
       description: null,
       forecasts: null,
+      selected: null,
     };
 
-    this.updateCurrentWeather.bind(this);
-    this.updateCurrentTime.bind(this);
-    this.updateForecasts.bind(this);
+    this.updateCurrentWeather = this.updateCurrentWeather.bind(this);
+    this.updateCurrentTime = this.updateCurrentTime.bind(this);
+    this.updateForecasts = this.updateForecasts.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -69,6 +71,12 @@ class Body extends React.Component {
     });
   }
 
+  handleClick(selected) {
+    this.setState(() => {
+      return { selected }
+    });
+  }
+
   render() {
     const city = this.state.city;
     const time = this.state.time;
@@ -79,7 +87,7 @@ class Body extends React.Component {
     const clouds = this.state.clouds;
     const description = this.state.description;
     const forecasts = this.state.forecasts;
-    console.log(forecasts);
+    const selected = this.state.selected;
 
     return (
       <div className='Body__container'>
@@ -87,6 +95,7 @@ class Body extends React.Component {
           <Header
             city = {city}
             time = {time}
+            onClick = {this.handleClick}
           />
         </div>
         <div>
