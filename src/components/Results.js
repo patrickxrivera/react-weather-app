@@ -4,7 +4,7 @@ import CurrentWeather from './CurrentWeather';
 import api from '../utils/api';
 import helpers from '../utils/helpers';
 
-class Body extends React.Component {
+class Results extends React.Component {
   constructor(props) {
     super(props);
 
@@ -113,4 +113,4 @@ class Body extends React.Component {
   }
 }
 
-export default Body;
+export default Results;

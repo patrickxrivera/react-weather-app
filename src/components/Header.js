@@ -6,10 +6,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.setState =
-    {
-        selected: null,
-    }
+    this.setState = { selected: null }
 
     this.handleClick = this.handleClick.bind(this);
   }
