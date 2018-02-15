@@ -15,7 +15,7 @@ function CurrentWeather(props) {
       <div className='CurrentWeather__container-content'>
         <div className='CurrentWeather__top'>
           <div>
-            <Sun size={80}/>
+            <Sun className="weather-icons" size={80}/>
           </div>
           <span className='CurrentWeather__temp-main'>
             {props.currentTemp}&deg;

@@ -3,3 +3,5 @@
 @import url('./styles/Results.css');
 @import url('./styles/Header.css');
 @import url('./styles/CurrentWeather.css');
+@import url('./styles/HourlyForecast.css');
+@import url('./styles/ForecastCard.css');

@@ -3,6 +3,7 @@ import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import api from '../utils/api';
 import helpers from '../utils/helpers';
+import HourlyForecast from './HourlyForecast';
 
 class Results extends React.Component {
   constructor(props) {
@@ -17,20 +18,21 @@ class Results extends React.Component {
       wind: null,
       clouds: null,
       description: null,
-      forecasts: null,
-      selected: null,
+      hourlyForecasts: null,
+      selected: 'current weather',
+      container: 'CurrentWeather__container',
     };
 
     this.updateCurrentWeather = this.updateCurrentWeather.bind(this);
     this.updateCurrentTime = this.updateCurrentTime.bind(this);
-    this.updateForecasts = this.updateForecasts.bind(this);
+    this.updateHourlyForecasts = this.updateHourlyForecasts.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.updateCurrentWeather();
     this.updateCurrentTime();
-    this.updateForecasts();
+    this.updateHourlyForecasts();
   }
 
   updateCurrentWeather() {
@@ -61,19 +63,31 @@ class Results extends React.Component {
     });
   }
 
-  updateForecasts() {
+  updateHourlyForecasts() {
     api
     .fetchHourlyForecasts()
-    .then((forecasts) => {
+    .then((hourlyForecasts) => {
       this.setState(() => {
-        return { forecasts }
+        return { hourlyForecasts }
       });
     });
   }
 
   handleClick(selected) {
     this.setState(() => {
-      return { selected }
+      const containerStyles =
+      {
+        'current weather': 'CurrentWeather__container',
+        'hourly forecast': 'HourlyForecast__container',
+        'daily forecast': 'DailyForecast__container',
+      }
+
+      return (
+        {
+          selected,
+          container: containerStyles[selected]
+        }
+      )
     });
   }
 
@@ -86,11 +100,12 @@ class Results extends React.Component {
     const wind = this.state.wind;
     const clouds = this.state.clouds;
     const description = this.state.description;
-    const forecasts = this.state.forecasts;
+    const hourlyForecasts = this.state.hourlyForecasts;
     const selected = this.state.selected;
+    const container = this.state.container;
 
     return (
-      <div className='Body__container'>
+      <div className = {container}>
         <div>
           <Header
             city = {city}
@@ -99,14 +114,21 @@ class Results extends React.Component {
           />
         </div>
         <div>
-          <CurrentWeather
-            currentTemp = {currentTemp}
-            high = {high}
-            low = {low}
-            wind = {wind}
-            clouds = {clouds}
-            description = {description}
-          />
+          {selected === 'current weather' &&
+            <CurrentWeather
+              currentTemp = {currentTemp}
+              high = {high}
+              low = {low}
+              wind = {wind}
+              clouds = {clouds}
+              description = {description}
+            />
+          }
+          {selected === 'hourly forecast' &&
+            <HourlyForecast
+              hourlyForecasts = {hourlyForecasts}
+            />
+          }
         </div>
       </div>
     )

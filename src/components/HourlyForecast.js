@@ -1,8 +1,11 @@
 import React from 'react';
+import ForecastCard from './ForecastCard';
 
-function HourlyForecast() {
+const HourlyForecast = () => {
   return (
-    <div>Hourly Forecast</div>
+    <section>
+      <ForecastCard />
+    </section>
   )
 }
 

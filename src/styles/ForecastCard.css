@@ -1,0 +1,25 @@
+.ForecastCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ForecastCard__container > div {
+  flex: 1;
+}
+
+.ForecastCard__time {
+  font-size: 1.5rem;
+  padding-top: 2rem;
+}
+
+.ForecastCard__icon {
+  stroke-width: 0.8;
+  margin-top: -1.8rem;
+}
+
+.ForecastCard__temp {
+  font-size: 3.8rem;
+  font-weight: 300;
+  margin-left: 1.5rem;
+}
