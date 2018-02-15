@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 function Header(props) {
-  console.log(props)
+
   return (
     <div className='Header__container'>
       <div className='Header__list'>
@@ -12,9 +12,9 @@ function Header(props) {
           <li className='Header__date'>{props.time}</li>
         </div>
         <div className='Header__weather-options-area'>
-          <li className='on'>Current</li>
-          <li className='off'>7-hour</li>
-          <li className='off'>10-day</li>
+          <li className='Header__current on'>Current</li>
+          <li className='Header__hour off'>12-hour</li>
+          <li className='Header__day off'>5-day</li>
         </div>
       </div>
     </div>

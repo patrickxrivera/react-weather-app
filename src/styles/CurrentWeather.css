@@ -19,7 +19,7 @@
 }
 
 .CurrentWeather__container-content > * {
-    margin-top: 2rem;
+    margin-top: 2.1rem;
 }
 
 .CurrentWeather__top {
@@ -34,7 +34,7 @@
 
 .CurrentWeather__temp-main {
   font-size: 4.5rem;
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 
 .CurrentWeather__description,
@@ -45,4 +45,11 @@
 .CurrentWeather__description {
   font-weight: 300;
   font-size: 1.25rem;
+}
+
+.CurrentWeather__bottom {
+  display: flex;
+  list-style-type: none;
+  width: 250px;
+  justify-content: space-between;
 }

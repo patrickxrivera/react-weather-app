@@ -37,3 +37,9 @@
 .off {
   opacity: 0.4;
 }
+
+.Header__current:hover,
+.Header__hour:hover,
+.Header__day:hover {
+  text-decoration: underline;
+}
