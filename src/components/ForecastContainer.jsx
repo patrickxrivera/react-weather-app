@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ForecastCard from './ForecastCard';
+import ForecastCard from './ForecastCard.jsx';
 import helpers from '../utils/helpers';
 import
   {

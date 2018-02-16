@@ -1,9 +1,10 @@
 import React from 'react';
-import Header from './Header';
-import CurrentWeather from './CurrentWeather';
-import ForecastContainer from './ForecastContainer';
+import Header from './Header.jsx';
+import CurrentWeather from './CurrentWeather.jsx';
+import ForecastContainer from './ForecastContainer.jsx';
 import api from '../utils/api';
 import helpers from '../utils/helpers';
+import styled from 'styled-components';
 
 class Results extends React.Component {
   constructor(props) {
@@ -134,5 +135,11 @@ class Results extends React.Component {
     )
   }
 }
+
+const keyframes = styled.keyframes;
+
+// const expand = keyframes`
+//   from
+// `
 
 export default Results;

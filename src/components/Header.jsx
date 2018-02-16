@@ -2,14 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const HeaderCurrent = styled.li`
-  opacity: ${props => props.selected === 'current weather' ? 1 : 0.4}
-`;
-
-const HeaderForecast = styled.li`
-  opacity: ${props => props.selected === 'forecast' ? 1 : 0.4}
-`;
-
 function Header(props) {
   const handleClick = (selected) => {
     props.onClick(selected);
@@ -51,5 +43,13 @@ Header.propTypes = {
   onClick: PropTypes.func.isRequired,
   selected: PropTypes.string.isRequired,
 }
+
+const HeaderCurrent = styled.li`
+  opacity: ${props => props.selected === 'current weather' ? 1 : 0.4}
+`;
+
+const HeaderForecast = styled.li`
+  opacity: ${props => props.selected === 'forecast' ? 1 : 0.4}
+`;
 
 export default Header;

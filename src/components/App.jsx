@@ -6,9 +6,9 @@ import {
          Switch
        }
 from "react-router-dom";
-import Welcome from './Welcome';
-import Nav from './Nav';
-import Results from './Results';
+import Welcome from './Welcome.jsx';
+import Nav from './Nav.jsx';
+import Results from './Results.jsx';
 
 class App extends React.Component {
   render() {
