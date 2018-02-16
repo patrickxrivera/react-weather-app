@@ -45,9 +45,8 @@ const iconComponents =
     Clouds: Cloud,
   }
 
-ForecastContainer.propTypes =
-  {
-    forcasts: PropTypes.array.isRequired,
-  }
+ForecastContainer.propTypes = {
+  forecasts: PropTypes.array.isRequired,
+}
 
 export default ForecastContainer;

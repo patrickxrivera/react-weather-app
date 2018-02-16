@@ -107,25 +107,26 @@ class Results extends React.Component {
       <div className = {container}>
         <div>
           <Header
-            city = {city}
-            time = {time}
-            onClick = {this.handleClick}
+            city={city}
+            time={time}
+            onClick={this.handleClick}
+            selected={selected}
           />
         </div>
         <div>
           {selected === 'current weather' &&
             <CurrentWeather
-              currentTemp = {currentTemp}
-              high = {high}
-              low = {low}
-              wind = {wind}
-              clouds = {clouds}
-              description = {description}
+              currentTemp={currentTemp}
+              high={high}
+              low={low}
+              wind={wind}
+              clouds={clouds}
+              description={description}
             />
           }
           {selected === 'forecast' &&
             <ForecastContainer
-              forecasts = {forecasts}
+              forecasts={forecasts}
             />
           }
         </div>

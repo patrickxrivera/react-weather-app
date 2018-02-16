@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ForecastCard = (props) => {
+function ForecastCard(props) {
   const WeatherIcon = props.icon;
 
   return (

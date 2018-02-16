@@ -1,55 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
+const HeaderCurrent = styled.li`
+  opacity: ${props => props.selected === 'current weather' ? 1 : 0.4}
+`;
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
+const HeaderForecast = styled.li`
+  opacity: ${props => props.selected === 'forecast' ? 1 : 0.4}
+`;
 
-    this.setState = { selected: null }
+function Header(props) {
+  const handleClick = (selected) => {
+    props.onClick(selected);
+  };
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(selected) {
-    this.props.onClick(selected);
-  }
-
-  render() {
-    return (
-      <div className='Header__container'>
-        <div className='Header__list'>
-          <div className='Header__location-and-date-area'>
-            <li className='Header__location'>{this.props.city}, FL</li>
-            <li className='Header__date'>{this.props.time}</li>
+  return (
+    <div className='Header__container'>
+      <div className='Header__list'>
+        <div className='Header__location-and-date-area'>
+          <li className='Header__location'>{props.city}, FL</li>
+          <li className='Header__date'>{props.time}</li>
+        </div>
+        <div className='Header__weather-options-area'>
+          <div className='Header__current--container bottom'>
+            <HeaderCurrent
+              selected={props.selected}
+              onClick={handleClick.bind(null, 'current weather')}
+            >
+              Current
+            </HeaderCurrent>
           </div>
-          <div className='Header__weather-options-area'>
-            <div className='Header__current--container'>
-              <li
-                className='Header__current on'
-                onClick={this.handleClick.bind(null, 'current weather')}>
-                Current
-              </li>
-            </div>
-            <div className='Header__forecast--container'>
-              <li
-                className='Header__day off'
-                onClick={this.handleClick.bind(null, 'forecast')}>
-                5-day
-              </li>
-            </div>
+          <div className='Header__forecast--container'>
+            <HeaderForecast
+              selected={props.selected}
+              onClick={handleClick.bind(null, 'forecast')}
+            >
+              5-day
+            </HeaderForecast>
           </div>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-Header.propTypes =
-{
+Header.propTypes = {
   city: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  selected: PropTypes.string.isRequired,
 }
 
 export default Header;
