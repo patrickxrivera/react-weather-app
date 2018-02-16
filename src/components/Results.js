@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
+import ForecastContainer from './ForecastContainer';
 import api from '../utils/api';
 import helpers from '../utils/helpers';
-import HourlyForecast from './HourlyForecast';
 
 class Results extends React.Component {
   constructor(props) {
@@ -18,21 +18,21 @@ class Results extends React.Component {
       wind: null,
       clouds: null,
       description: null,
-      hourlyForecasts: null,
+      forecasts: null,
       selected: 'current weather',
       container: 'CurrentWeather__container',
     };
 
     this.updateCurrentWeather = this.updateCurrentWeather.bind(this);
     this.updateCurrentTime = this.updateCurrentTime.bind(this);
-    this.updateHourlyForecasts = this.updateHourlyForecasts.bind(this);
+    this.updateForecasts = this.updateForecasts.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.updateCurrentWeather();
     this.updateCurrentTime();
-    this.updateHourlyForecasts();
+    this.updateForecasts();
   }
 
   updateCurrentWeather() {
@@ -63,12 +63,12 @@ class Results extends React.Component {
     });
   }
 
-  updateHourlyForecasts() {
+  updateForecasts() {
     api
-    .fetchHourlyForecasts()
-    .then((hourlyForecasts) => {
+    .fetchForecasts()
+    .then((forecasts) => {
       this.setState(() => {
-        return { hourlyForecasts }
+        return { forecasts }
       });
     });
   }
@@ -78,8 +78,7 @@ class Results extends React.Component {
       const containerStyles =
       {
         'current weather': 'CurrentWeather__container',
-        'hourly forecast': 'HourlyForecast__container',
-        'daily forecast': 'DailyForecast__container',
+        'forecast': 'Forecast__container',
       }
 
       return (
@@ -100,7 +99,7 @@ class Results extends React.Component {
     const wind = this.state.wind;
     const clouds = this.state.clouds;
     const description = this.state.description;
-    const hourlyForecasts = this.state.hourlyForecasts;
+    const forecasts = this.state.forecasts;
     const selected = this.state.selected;
     const container = this.state.container;
 
@@ -124,9 +123,9 @@ class Results extends React.Component {
               description = {description}
             />
           }
-          {selected === 'hourly forecast' &&
-            <HourlyForecast
-              hourlyForecasts = {hourlyForecasts}
+          {selected === 'forecast' &&
+            <ForecastContainer
+              forecasts = {forecasts}
             />
           }
         </div>

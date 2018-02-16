@@ -1,31 +1,23 @@
 import React from 'react';
 import { Cloud, Sun } from 'react-feather';
+import PropTypes from 'prop-types';
 
-function ForecastCard() {
+const ForecastCard = (props) => {
+  const ForecastIcon = props.icon;
   return (
-    <section className = 'HourlyForecast__container-main'>
       <div className = 'ForecastCard__container'>
-        <div className = 'ForecastCard__time'>3pm</div>
+        <div className = 'ForecastCard__time'>{props.time}</div>
         <div><Sun className="ForecastCard__icon" size={90}/></div>
-        <div className='ForecastCard__temp'>72&deg;</div>
+        <div className='ForecastCard__temp'>{props.temp}&deg;</div>
       </div>
-      <div className = 'ForecastCard__container'>
-        <div className = 'ForecastCard__time'>3pm</div>
-        <div><Sun className="ForecastCard__icon" size={90}/></div>
-        <div className='ForecastCard__temp'>72&deg;</div>
-      </div>
-      <div className = 'ForecastCard__container'>
-        <div className = 'ForecastCard__time'>3pm</div>
-        <div><Sun className="ForecastCard__icon" size={90}/></div>
-        <div className='ForecastCard__temp'>72&deg;</div>
-      </div>
-      <div className = 'ForecastCard__container'>
-        <div className = 'ForecastCard__time'>3pm</div>
-        <div><Sun className="ForecastCard__icon" size={90}/></div>
-        <div className='ForecastCard__temp'>72&deg;</div>
-      </div>
-    </section>
   )
 }
+
+ForecastCard.propTypes =
+  {
+    time: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    temp: PropTypes.string.isRequired,
+  }
 
 export default ForecastCard;

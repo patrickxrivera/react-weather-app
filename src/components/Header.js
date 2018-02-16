@@ -30,13 +30,8 @@ class Header extends React.Component {
               Current
             </li>
             <li
-              className='Header__hour off'
-              onClick={this.handleClick.bind(null, 'hourly forecast')}>
-              12-hour
-            </li>
-            <li
               className='Header__day off'
-              onClick={this.handleClick.bind(null, 'daily forecast')}>
+              onClick={this.handleClick.bind(null, 'forecast')}>
               5-day
             </li>
           </div>

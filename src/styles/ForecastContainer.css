@@ -1,4 +1,4 @@
-.HourlyForecast__container-main {
+.Forecast__container-content {
   margin-top: 1rem;
   background-color: #fff;
   border-radius: 0.25rem;
@@ -8,6 +8,6 @@
   display: flex;
 }
 
-.HourlyForecast__container-main > div {
+.Forecast__container-content > div {
   flex: 1;
 }

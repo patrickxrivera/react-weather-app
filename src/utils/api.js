@@ -31,12 +31,16 @@ const api = {
            });
   },
 
-  fetchHourlyForecasts() {
-    const url = `${baseUrl}forecast${urlSettings}`;
+  fetchForecasts() {
+    const url = `${baseUrl}forecast/daily${urlSettings}`;
 
     return axios
            .get(url)
-           .then(response => response.data.list);
+           .then((response) => {
+             const allForecasts = response.data.list;
+             const selectForecasts = allForecasts.slice(0, 5);
+             return selectForecasts;
+           });
   }
 }
 
