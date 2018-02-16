@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { fadeInUp } from '../styles/styles.jsx';
 
-function ForecastCard(props) {
+function Forecasts(props) {
   const WeatherIcon = props.icon;
 
   return (
-      <div className = 'ForecastCard__container' key = {props.time}>
+      <Container>
         <div className = 'ForecastCard__time'>{props.time}</div>
         <div>
           <WeatherIcon
@@ -14,15 +16,22 @@ function ForecastCard(props) {
           />
         </div>
         <div className = 'ForecastCard__temp'>{props.temp}&deg;</div>
-      </div>
+      </Container>
   )
 }
 
-ForecastCard.propTypes =
+Forecasts.propTypes =
   {
     time: PropTypes.string.isRequired,
-    icon: PropTypes.element.isRequired,
+    icon: PropTypes.func.isRequired,
     temp: PropTypes.number.isRequired,
   }
 
-export default ForecastCard;
+const Container = styled.div`
+  animation: 1200ms ${fadeInUp} ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export default Forecasts;

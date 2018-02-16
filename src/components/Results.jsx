@@ -1,145 +1,55 @@
 import React from 'react';
 import Header from './Header.jsx';
 import CurrentWeather from './CurrentWeather.jsx';
-import ForecastContainer from './ForecastContainer.jsx';
-import api from '../utils/api';
-import helpers from '../utils/helpers';
-import styled from 'styled-components';
+import ForecastsContainer from './ForecastsContainer.jsx';
+import styled, { keyframes } from 'styled-components';
 
-class Results extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      city: null,
-      time: null,
-      currentTemp: null,
-      high: null,
-      low: null,
-      wind: null,
-      clouds: null,
-      description: null,
-      forecasts: null,
-      selected: 'current weather',
-      container: 'CurrentWeather__container',
-    };
-
-    this.updateCurrentWeather = this.updateCurrentWeather.bind(this);
-    this.updateCurrentTime = this.updateCurrentTime.bind(this);
-    this.updateForecasts = this.updateForecasts.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.updateCurrentWeather();
-    this.updateCurrentTime();
-    this.updateForecasts();
-  }
-
-  updateCurrentWeather() {
-    api
-    .fetchCurrentWeather()
-    .then((response) => {
-      const [city, currentTemp, high, low, wind, clouds, description] = response;
-      this.setState(() => {
-        return (
-          {
-            city,
-            currentTemp,
-            high,
-            low,
-            wind,
-            clouds,
-            description,
-          }
-        )
-      });
-    });
-  }
-
-  updateCurrentTime() {
-    const time = helpers.getCurrentTime();
-    this.setState(() => {
-      return { time }
-    });
-  }
-
-  updateForecasts() {
-    api
-    .fetchForecasts()
-    .then((forecasts) => {
-      this.setState(() => {
-        return { forecasts }
-      });
-    });
-  }
-
-  handleClick(selected) {
-    this.setState(() => {
-      const containerStyles =
-      {
-        'current weather': 'CurrentWeather__container',
-        'forecast': 'Forecast__container',
-      }
-
-      return (
-        {
-          selected,
-          container: containerStyles[selected]
-        }
-      )
-    });
-  }
-
-  render() {
-    const city = this.state.city;
-    const time = this.state.time;
-    const currentTemp = this.state.currentTemp;
-    const high = this.state.high;
-    const low = this.state.low;
-    const wind = this.state.wind;
-    const clouds = this.state.clouds;
-    const description = this.state.description;
-    const forecasts = this.state.forecasts;
-    const selected = this.state.selected;
-    const container = this.state.container;
-
-    return (
-      <div className = {container}>
-        <div>
-          <Header
-            city={city}
-            time={time}
-            onClick={this.handleClick}
-            selected={selected}
-          />
-        </div>
-        <div>
-          {selected === 'current weather' &&
-            <CurrentWeather
-              currentTemp={currentTemp}
-              high={high}
-              low={low}
-              wind={wind}
-              clouds={clouds}
-              description={description}
-            />
-          }
-          {selected === 'forecast' &&
-            <ForecastContainer
-              forecasts={forecasts}
-            />
-          }
-        </div>
+function Results(props) {
+  return (
+    <ResultsCard selected={props.selected}>
+      <div>
+        <Header
+          city={props.city}
+          time={props.time}
+          onClick={props.handleClick}
+          selected={props.selected}
+        />
       </div>
-    )
-  }
+      <div>
+        {props.selected === 'current weather' &&
+          <CurrentWeather
+            currentTemp={props.currentTemp}
+            high={props.high}
+            low={props.low}
+            wind={props.wind}
+            clouds={props.clouds}
+            description={props.description}
+          />
+        }
+        {props.selected === 'forecast' &&
+          <ForecastsContainer
+            forecasts={props.forecasts}
+          />
+        }
+      </div>
+    </ResultsCard>
+  )
 }
 
-const keyframes = styled.keyframes;
+const expand = keyframes`
+  from { width: 500px; }
+  to { width: 900px; }
+`
 
-// const expand = keyframes`
-//   from
-// `
+const contract = keyframes`
+  from { width: 900px; }
+  to { width: 500px; }
+`
+
+const ResultsCard = styled.div`
+  animation: ${props => props.selected === 'current weather' ? contract : expand}
+             700ms cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+   margin: 1.5rem auto;
+`
 
 export default Results;

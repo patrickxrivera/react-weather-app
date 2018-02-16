@@ -10,16 +10,18 @@
   justify-content: center;
 }
 
-.CurrentWeather__container-content {
+/* .CurrentWeather__container-content {
   margin: 0 auto;
   width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-.CurrentWeather__container-content > * {
-    margin-top: 2.5rem;
+.CurrentWeather__top,
+.CurrentWeather__description,
+.CurrentWeather__bottom {
+  margin-top: 2.5rem;
 }
 
 .CurrentWeather__top {

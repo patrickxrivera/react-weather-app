@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ForecastCard from './ForecastCard.jsx';
+import Forecasts from './Forecasts.jsx';
 import helpers from '../utils/helpers';
 import
   {
@@ -24,10 +24,11 @@ const ForecastContainer = (props) => {
         const temp = Math.round(forecast.temp.day);
 
         return (
-          <ForecastCard
+          <Forecasts
             time={time}
             icon={icon}
             temp={temp}
+            key={time}
           />
         )
       })}

@@ -8,7 +8,7 @@ import {
 from "react-router-dom";
 import Welcome from './Welcome.jsx';
 import Nav from './Nav.jsx';
-import Results from './Results.jsx';
+import ResultsContainer from './ResultsContainer.jsx';
 
 class App extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class App extends React.Component {
           <Nav />
           <Switch>
             <Route exact path='/' component={Welcome} />
-            <Route exact path='/results' component={Results} />
+            <Route exact path='/results' component={ResultsContainer} />
           </Switch>
         </div>
       </Router>

@@ -1,10 +1,6 @@
-.ForecastCard__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.ForecastCard__container > div {
+.ForecastCard__time,
+.ForecastCard__icon,
+.ForecastCard__temp {
   flex: 1;
 }
 

@@ -8,11 +8,13 @@ import
   Cloud,
 } from 'react-feather';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { fadeInUp } from '../styles/styles.jsx';
 
 function CurrentWeather(props) {
   return (
     <div className='CurrentWeather__container-main'>
-      <div className='CurrentWeather__container-content'>
+      <Container>
         <div className='CurrentWeather__top'>
           <div>
             <Sun className="weather-icons CurrentWeather__icon" size={80}/>
@@ -42,13 +44,12 @@ function CurrentWeather(props) {
             <li>{props.clouds}%</li>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }
 
-CurrentWeather.propTypes =
-{
+CurrentWeather.propTypes = {
   currentTemp: PropTypes.number.isRequired,
   high: PropTypes.number.isRequired,
   low: PropTypes.number.isRequired,
@@ -56,5 +57,14 @@ CurrentWeather.propTypes =
   clouds: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
 }
+
+const Container = styled.div`
+  animation: 1000ms ${fadeInUp} ease-in;
+  margin: 0 auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default CurrentWeather;
