@@ -24,16 +24,20 @@ class Header extends React.Component {
             <li className='Header__date'>{this.props.time}</li>
           </div>
           <div className='Header__weather-options-area'>
-            <li
-              className='Header__current on'
-              onClick={this.handleClick.bind(null, 'current weather')}>
-              Current
-            </li>
-            <li
-              className='Header__day off'
-              onClick={this.handleClick.bind(null, 'forecast')}>
-              5-day
-            </li>
+            <div className='Header__current--container'>
+              <li
+                className='Header__current on'
+                onClick={this.handleClick.bind(null, 'current weather')}>
+                Current
+              </li>
+            </div>
+            <div className='Header__forecast--container'>
+              <li
+                className='Header__day off'
+                onClick={this.handleClick.bind(null, 'forecast')}>
+                5-day
+              </li>
+            </div>
           </div>
         </div>
       </div>

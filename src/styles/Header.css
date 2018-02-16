@@ -2,7 +2,6 @@
   background-color: #fff;
   border-radius: 0.25rem;
   box-shadow: rgba(23,43,99,0.26) 0 7px 42px;
-  padding: 1rem 1rem;
 }
 
 .Header__list {
@@ -10,6 +9,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 62px;
+  margin: 0 .8rem;
 }
 
 .Header__location-and-date-area {
@@ -38,8 +39,16 @@
   opacity: 0.4;
 }
 
-.Header__current:hover,
-.Header__hour:hover,
-.Header__day:hover {
-  text-decoration: underline;
+.Header__current--container,
+.Header__forecast--container {
+  min-height: 45px;
+  align-items: center;
+  display: flex;
+}
+
+.Header__current--container:hover,
+.Header__forecast--container:hover {
+  border-bottom: 2px solid #52565F;;
+  padding: .4rem 0;
+  margin-bottom: -2px;
 }
