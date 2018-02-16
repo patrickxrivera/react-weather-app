@@ -19,7 +19,7 @@
 }
 
 .CurrentWeather__container-content > * {
-    margin-top: 2.1rem;
+    margin-top: 2.5rem;
 }
 
 .CurrentWeather__top {
@@ -52,4 +52,12 @@
   list-style-type: none;
   width: 250px;
   justify-content: space-between;
+}
+
+.CurrentWeather__temp-bottom {
+  padding-left: 0.4rem;
+}
+
+.CurrentWeather__icon {
+  padding-top: 0.45rem;
 }

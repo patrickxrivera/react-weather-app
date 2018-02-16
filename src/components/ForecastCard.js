@@ -1,14 +1,19 @@
 import React from 'react';
-import { Cloud, Sun } from 'react-feather';
 import PropTypes from 'prop-types';
 
 const ForecastCard = (props) => {
-  const ForecastIcon = props.icon;
+  const WeatherIcon = props.icon;
+
   return (
-      <div className = 'ForecastCard__container'>
+      <div className = 'ForecastCard__container' key = {props.time}>
         <div className = 'ForecastCard__time'>{props.time}</div>
-        <div><Sun className="ForecastCard__icon" size={90}/></div>
-        <div className='ForecastCard__temp'>{props.temp}&deg;</div>
+        <div>
+          <WeatherIcon
+            className = 'ForecastCard__icon'
+            size={90}
+          />
+        </div>
+        <div className = 'ForecastCard__temp'>{props.temp}&deg;</div>
       </div>
   )
 }
@@ -16,8 +21,8 @@ const ForecastCard = (props) => {
 ForecastCard.propTypes =
   {
     time: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    temp: PropTypes.string.isRequired,
+    icon: PropTypes.element.isRequired,
+    temp: PropTypes.number.isRequired,
   }
 
 export default ForecastCard;

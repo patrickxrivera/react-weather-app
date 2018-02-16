@@ -15,7 +15,7 @@ function CurrentWeather(props) {
       <div className='CurrentWeather__container-content'>
         <div className='CurrentWeather__top'>
           <div>
-            <Sun className="weather-icons" size={80}/>
+            <Sun className="weather-icons CurrentWeather__icon" size={80}/>
           </div>
           <span className='CurrentWeather__temp-main'>
             {props.currentTemp}&deg;
@@ -27,11 +27,11 @@ function CurrentWeather(props) {
         <div className='CurrentWeather__bottom'>
           <div>
             <li><ArrowUp /></li>
-            <li>{props.high}&deg;</li>
+            <li className='CurrentWeather__temp-bottom'>{props.high}&deg;</li>
           </div>
           <div>
             <li><ArrowDown /></li>
-            <li>{props.low}&deg;</li>
+            <li className='CurrentWeather__temp-bottom'>{props.low}&deg;</li>
           </div>
           <div>
             <li><Wind /></li>
