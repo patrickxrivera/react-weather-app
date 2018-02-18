@@ -1,11 +1,36 @@
 import React from 'react';
+import styled from 'styled-components';
+import SearchContainer from './SearchContainer.jsx'
 
-class Welcome extends React.Component {
-  render() {
-    return (
-      <div>Welcome!</div>
-    )
-  }
+function Welcome() {
+  return (
+    <Container>
+      <Header>
+        Weather Info For Your Favorite Cities
+      </Header>
+      <Subscript>
+        Never have an unprepared day.
+      </Subscript>
+      <SearchContainer />
+    </Container>
+  )
 }
+
+const Container = styled.div`
+  margin: 7rem auto;
+  width: 800px;
+`
+
+const Header = styled.div`
+  font-size: 2.5rem;
+  text-align: center;
+`
+
+const Subscript = styled.div`
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 3rem;
+`
 
 export default Welcome;

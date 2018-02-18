@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+a:visited,
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .Nav__header {
   font-size: 1.5rem;
   font-weight: bold;
@@ -25,6 +31,10 @@
 }
 
 .Nav__list > li:hover:not(:last-child) {
+  color: #4D96E0;
+}
+
+.Nav__home:hover {
   color: #4D96E0;
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Nav() {
   return (
     <div className='Nav__container'>
-      <header className='Nav__header'>
+      <NavLink to='/' className='Nav__header'>
         Weather.io
-      </header>
+      </NavLink>
       <ul className='Nav__list'>
-        <li>Home</li>
+        <NavLink to='/' className='Nav__home'>Home</NavLink>
         <li>Sign In</li>
         <li className='Nav__button'>Sign Up Free</li>
       </ul>

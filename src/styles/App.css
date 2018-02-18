@@ -1,11 +1,8 @@
 body {
-  color: #52565F;
+  color: #fff;
   font-family: 'Roboto', sans-serif;
   background-color: #eaf1f3;
-}
-
-.App__container {
-  margin-top: 1rem;
+  background-image: url('https://source.unsplash.com/1HplMDoRvTo/1300x700');
 }
 
 .weather-icons {
