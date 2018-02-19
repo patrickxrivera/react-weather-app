@@ -1,24 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
 import SearchContainer from './SearchContainer.jsx';
+import AutoCompleteContainer from './AutoCompleteContainer.jsx';
 import { fadeInUp } from '../styles/styles.jsx';
 
-function Welcome() {
-  return (
-    <Container>
-      <Header>
-        Weather Info For Your Favorite Cities
-      </Header>
-      <Subscript>
-        Never have an unprepared day.
-      </Subscript>
-      <SearchContainer />
-    </Container>
-  )
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      city: null,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const city = e.target.value;
+
+    this.setState(() => {
+      return { city }
+    });
+  }
+
+  render() {
+    const city = this.state.city;
+    const fireRedirect = this.state.fireRedirect;
+
+    return (
+      <Container>
+        <Header>
+          Weather Info For Your Favorite Cities
+        </Header>
+        <Subscript>
+          Never have an unprepared day.
+        </Subscript>
+        <SearchContainer
+          city={city}
+          fireRedirect={fireRedirect}
+          onChange={this.handleChange}
+        />
+        <AutoCompleteContainer />
+      </Container>
+    )
+  }
 }
 
 const Container = styled.div`
-  margin: 7rem auto;
+  margin: 4rem auto;
   width: 800px;
   opacity: 0;
   animation: 1200ms ${fadeInUp} 1000ms forwards;

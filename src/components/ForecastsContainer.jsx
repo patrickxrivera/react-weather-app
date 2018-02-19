@@ -13,7 +13,7 @@ import
   }
 from 'react-feather';
 
-const ForecastContainer = (props) => {
+function ForecastContainer(props) {
   const forecasts = props.forecasts;
 
   return (
