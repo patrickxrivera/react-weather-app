@@ -1,9 +1,9 @@
 import axios from 'axios';
 
+// Weather API
 const apiKey = 'e7819a0645bb3723fbfe223ad074c870';
 const baseUrl = 'https://api.openweathermap.org/data/2.5/';
 const urlSettings = `,us&units=imperial&mode=json&appid=${apiKey}`;
-
 
 const api = {
   fetchCurrentWeather(city) {

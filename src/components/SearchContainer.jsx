@@ -29,7 +29,7 @@ class SearchContainer extends React.Component {
   render() {
     const fireRedirect = this.state.fireRedirect;
     const city = this.props.city;
-    console.log(city);
+
     const routeData = {
       pathname: '/results',
       state: city,
@@ -62,8 +62,9 @@ const Container = styled.form`
   width: 500px;
   height: 2.5rem;
   background-color: #fff;
-  border-radius: 0.25rem;
-  box-shadow: rgba(23,43,99,0.26) 0 7px 42px;
+  border-radius: 2px;
+  border: 0.5px solid #ced6e0;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   padding: 0.25rem;
   z-index: 100;
 `

@@ -3,28 +3,38 @@ import styled from 'styled-components';
 import SearchContainer from './SearchContainer.jsx';
 import AutoCompleteContainer from './AutoCompleteContainer.jsx';
 import { fadeInUp } from '../styles/styles.jsx';
+import helpers from '../utils/helpers';
 
 class Welcome extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      city: null,
+      inputCity: null,
+      suggestedCities: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    const city = e.target.value;
+    const inputCity = e.target.value;
 
     this.setState(() => {
-      return { city }
+      const filteredCities = helpers.filterCities(inputCity);
+
+      return (
+        {
+          inputCity,
+          suggestedCities: filteredCities,
+        }
+      )
     });
   }
 
   render() {
-    const city = this.state.city;
+    const inputCity = this.state.inputCity;
+    const suggestedCities = this.state.suggestedCities;
 
     return (
       <Container>
@@ -35,21 +45,21 @@ class Welcome extends React.Component {
           Never have an unprepared day.
         </Subscript>
         <SearchContainer
-          city={city}
+          city={inputCity}
           onChange={this.handleChange}
         />
-        { city &&
-          <AutoCompleteContainer city={city} />}
+        {inputCity && suggestedCities &&
+          <AutoCompleteContainer cities={suggestedCities} />}
       </Container>
     )
   }
 }
 
 const Container = styled.div`
-  margin: 4rem auto;
+  margin: 5rem auto;
   width: 800px;
   opacity: 0;
-  animation: 1200ms ${fadeInUp} 1000ms forwards;
+  animation: 1200ms ${fadeInUp} 400ms forwards;
 `
 
 const Header = styled.div`
