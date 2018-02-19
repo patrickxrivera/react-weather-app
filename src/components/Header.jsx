@@ -11,7 +11,7 @@ function Header(props) {
     <div className='Header__container'>
       <div className='Header__list'>
         <div className='Header__location-and-date-area'>
-          <li className='Header__location'>{props.city}, FL</li>
+          <li className='Header__location'>{props.city}</li>
           <li className='Header__date'>{props.time}</li>
         </div>
         <div className='Header__weather-options-area'>

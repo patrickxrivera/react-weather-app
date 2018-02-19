@@ -2,45 +2,43 @@ import React from 'react';
 import styled from 'styled-components';
 import { Search } from 'react-feather';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      city: null,
       fireRedirect: false,
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
+  handleChange(e) {
+    this.props.onChange(e);
+  }
+
+  handleSubmit() {
     this.setState(() => {
       return { fireRedirect: true }
     });
   }
 
-  handleChange(e) {
-    const city = e.target.value;
-
-    this.setState(() => {
-      return { city }
-    });
-  }
-
   render() {
-    const city = this.state.city;
     const fireRedirect = this.state.fireRedirect;
+    const city = this.props.city;
+    console.log(city);
+    const routeData = {
+      pathname: '/results',
+      state: city,
+    }
 
     return (
       <div>
         <Container onSubmit={this.handleSubmit}>
-          <Link to={{
-              pathname: '/results',
-              state: { city },
-          }}>
+          <Link to={routeData}>
             <SearchIcon />
           </Link>
           <Input
@@ -50,12 +48,7 @@ class SearchContainer extends React.Component {
             autofocus
           />
         </Container>
-        {fireRedirect &&
-          <Redirect to={{
-             pathname: '/results',
-             state: { city }
-          }}/>
-         }
+        { fireRedirect && <Redirect to={routeData}/> }
       </div>
     )
   }
@@ -90,5 +83,10 @@ const Input = styled.input`
   outline: none;
   font: inherit;
 `
+
+SearchContainer.propTypes = {
+  city: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+}
 
 export default SearchContainer;

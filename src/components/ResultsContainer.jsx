@@ -8,7 +8,7 @@ class ResultsContainer extends React.Component {
     super(props);
 
     this.state = {
-      city: this.props.location.state.city,
+      city: this.props.location.state,
       time: null,
       currentTemp: null,
       high: null,
@@ -33,6 +33,7 @@ class ResultsContainer extends React.Component {
   }
 
   updateCurrentWeather() {
+
     api
     .fetchCurrentWeather(this.state.city)
     .then((response) => {

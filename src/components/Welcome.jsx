@@ -25,7 +25,6 @@ class Welcome extends React.Component {
 
   render() {
     const city = this.state.city;
-    const fireRedirect = this.state.fireRedirect;
 
     return (
       <Container>
@@ -37,10 +36,10 @@ class Welcome extends React.Component {
         </Subscript>
         <SearchContainer
           city={city}
-          fireRedirect={fireRedirect}
           onChange={this.handleChange}
         />
-        <AutoCompleteContainer />
+        { city &&
+          <AutoCompleteContainer city={city} />}
       </Container>
     )
   }

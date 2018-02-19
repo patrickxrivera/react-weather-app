@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 class AutoCompleteContainer extends React.Component {
-  render() {
+  render(props) {
     const cities = ['Jacksonville', 'San Francisco', 'Birmingham', 'Alaska', 'Piedmont', 'Orlanger'];
 
     return (
@@ -32,5 +33,9 @@ const City = styled.li`
   list-style-type: none;
   margin: 1rem 0;
 `
+
+AutoCompleteContainer.propTypes = {
+  city: PropTypes.string.isRequired,
+}
 
 export default AutoCompleteContainer;
