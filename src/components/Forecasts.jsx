@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { fadeInUp } from '../styles/styles.jsx';
+import { fadeIn } from '../styles/styles.jsx';
 
 function Forecasts(props) {
   const WeatherIcon = props.icon;
@@ -28,7 +28,7 @@ Forecasts.propTypes =
   }
 
 const Container = styled.div`
-  animation: 1200ms ${fadeInUp} ease-in;
+  animation: 1200ms ${fadeIn} ease-in;
   display: flex;
   flex-direction: column;
   align-items: center;

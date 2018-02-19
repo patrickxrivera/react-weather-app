@@ -1,25 +1,67 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Search } from 'react-feather';
+import { Link, Redirect } from 'react-router-dom';
 
 class SearchContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      city: null,
+      fireRedirect: false,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(e) {
+    this.setState(() => {
+      return { fireRedirect: true }
+    });
+  }
+
+  handleChange(e) {
+    const city = e.target.value;
+
+    this.setState(() => {
+      return { city }
+    });
+  }
+
   render() {
+    const city = this.state.city;
+    const fireRedirect = this.state.fireRedirect;
+
     return (
-      <Container>
-        <div>
-          <SearchIcon />
-        </div>
-        <Input
-          type="text"
-          placeholder="Enter your favorite city"
-          autofocus
-        />
-      </Container>
+      <div>
+        <Container onSubmit={this.handleSubmit}>
+          <Link to={{
+              pathname: '/results',
+              state: { city },
+          }}>
+            <SearchIcon />
+          </Link>
+          <Input
+            type="text"
+            placeholder="Enter your favorite city"
+            onChange={this.handleChange}
+            autofocus
+          />
+        </Container>
+        {fireRedirect &&
+          <Redirect to={{
+             pathname: '/results',
+             state: { city }
+          }}/>
+         }
+      </div>
     )
   }
 }
 
-const Container = styled.div`
+const Container = styled.form`
   margin: 3.75rem auto 0;
   display: flex;
   justify-content: flex-start;
@@ -37,6 +79,7 @@ const SearchIcon = styled(Search)`
   stroke: #7f8c8d;
   margin-top: .3rem;
   margin-left: .4rem;
+  cursor: pointer;
 `
 
 const Input = styled.input`

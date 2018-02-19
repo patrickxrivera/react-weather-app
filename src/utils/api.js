@@ -2,11 +2,12 @@ import axios from 'axios';
 
 const apiKey = 'e7819a0645bb3723fbfe223ad074c870';
 const baseUrl = 'https://api.openweathermap.org/data/2.5/';
-const urlSettings = `?q=Tallahassee,us&units=imperial&mode=json&appid=${apiKey}`;
+const urlSettings = `,us&units=imperial&mode=json&appid=${apiKey}`;
+
 
 const api = {
-  fetchCurrentWeather() {
-    const url = `${baseUrl}weather${urlSettings}`;
+  fetchCurrentWeather(city) {
+    const url = `${baseUrl}weather?q=${city}${urlSettings}`;
 
     return axios
            .get(url)
@@ -32,7 +33,7 @@ const api = {
   },
 
   fetchForecasts() {
-    const url = `${baseUrl}forecast/daily${urlSettings}`;
+    const url = `${baseUrl}forecast/daily?q=${this.city}${urlSettings}`;
 
     return axios
            .get(url)

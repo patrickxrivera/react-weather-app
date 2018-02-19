@@ -49,7 +49,9 @@ const contract = keyframes`
 const ResultsCard = styled.div`
   animation: ${props => props.selected === 'current weather' ? contract : expand}
              700ms cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-   margin: 1.5rem auto;
+  margin: 1.5rem auto;
+  color: #52565F;
+  width: 500px;
 `
 
 export default Results;

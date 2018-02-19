@@ -9,9 +9,10 @@ import
 } from 'react-feather';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { fadeInUp } from '../styles/styles.jsx';
+import { fadeIn } from '../styles/styles.jsx';
 
 function CurrentWeather(props) {
+
   return (
     <div className='CurrentWeather__container-main'>
       <Container>
@@ -59,7 +60,7 @@ CurrentWeather.propTypes = {
 }
 
 const Container = styled.div`
-  animation: 1000ms ${fadeInUp} ease-in;
+  animation: 1000ms ${fadeIn} ease-in;
   margin: 0 auto;
   width: 400px;
   display: flex;

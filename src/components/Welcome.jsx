@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchContainer from './SearchContainer.jsx'
+import SearchContainer from './SearchContainer.jsx';
+import { fadeInUp } from '../styles/styles.jsx';
 
 function Welcome() {
   return (
@@ -19,6 +20,8 @@ function Welcome() {
 const Container = styled.div`
   margin: 7rem auto;
   width: 800px;
+  opacity: 0;
+  animation: 1200ms ${fadeInUp} 1000ms forwards;
 `
 
 const Header = styled.div`
