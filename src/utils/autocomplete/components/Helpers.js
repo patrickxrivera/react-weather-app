@@ -1,14 +1,14 @@
 const has = Object.prototype.hasOwnProperty;
 
-const toArray = (words) =>  {
+const toArray = words => {
   return words.split('');
-}
+};
 
-const isEnd = (obj) => {
+const isEnd = obj => {
   return typeof obj === 'number';
 };
 
-const removeLastChar = (string) => {
+const removeLastChar = string => {
   return string.slice(0, string.length - 1);
 };
 
@@ -16,7 +16,7 @@ const doesNotExist = (node, letter) => {
   return !node[letter];
 };
 
-const sort = (wordsObj) => {
+const sort = wordsObj => {
   let sortedArr = wordsObj.sort((a, b) => {
     return b.selectionCount - a.selectionCount;
   });
@@ -24,11 +24,4 @@ const sort = (wordsObj) => {
   return words;
 };
 
-export {
-         has,
-         toArray,
-         isEnd,
-         removeLastChar,
-         doesNotExist,
-         sort,
-}
+export { has, toArray, isEnd, removeLastChar, doesNotExist, sort };

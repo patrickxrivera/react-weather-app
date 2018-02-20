@@ -9,16 +9,16 @@ class AutoCompleteContainer extends React.Component {
     super(props);
 
     this.state = {
-      selectedCity: null,
-    }
+      selectedCity: null
+    };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(cityAndState) {
-    const selectedCity = helpers.getCityFrom(cityAndState)
+    const selectedCity = helpers.getCityFrom(cityAndState);
     this.setState(() => {
-      return { selectedCity }
+      return { selectedCity };
     });
 
     helpers.select(cityAndState);
@@ -27,44 +27,37 @@ class AutoCompleteContainer extends React.Component {
   render() {
     const results = createResultsHTML(this.props.cities, this.handleClick);
     const selectedCity = this.state.selectedCity;
-    const routeData =
-      {
-        pathname: '/results',
-        state: selectedCity,
-      };
+    const routeData = {
+      pathname: '/results',
+      state: selectedCity
+    };
 
     return (
       <div>
         <Container>
-          <ListContainer>
-            {results}
-          </ListContainer>
+          <ListContainer>{results}</ListContainer>
         </Container>
-        { selectedCity && <Redirect to={routeData}/> }
+        {selectedCity && <Redirect to={routeData} />}
       </div>
-    )
+    );
   }
 }
 
 const createResultsHTML = (response, handleClick) => {
   if (helpers.isError(response)) {
-    const errorMsg = helpers.createErrorMsg(response)
-    return <ListItem> {errorMsg} </ListItem>
+    const errorMsg = helpers.createErrorMsg(response);
+    return <ListItem> {errorMsg} </ListItem>;
   } else {
-    const results =
-      response.map((city) => {
-          return (
-            <ListItem
-              key={city}
-              onClick={() => handleClick(city)}
-            >
-              {city}
-            </ListItem>
-          )
-      });
-      return results;
+    const results = response.map(city => {
+      return (
+        <ListItem key={city} onClick={() => handleClick(city)}>
+          {city}
+        </ListItem>
+      );
+    });
+    return results;
   }
-}
+};
 
 const Container = styled.div`
   margin: 0 auto;
@@ -74,18 +67,18 @@ const Container = styled.div`
   border: 0.5px solid #ced6e0;
   border-top: none;
   width: 505px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   background-color: #fff;
   padding: 0.1rem;
   padding-bottom: 0.2rem;
   z-index: -100;
-`
+`;
 
 const ListContainer = styled.ul`
   padding-left: 0;
   margin: -3px 0;
   margin-left: -2px;
-}`
+}`;
 
 const ListItem = styled.li`
   color: black;
@@ -97,10 +90,10 @@ const ListItem = styled.li`
   &:hover {
     background-color: #ecf0f1;
   }
-`
+`;
 
 AutoCompleteContainer.propTypes = {
-  cities: PropTypes.array.isRequired,
-}
+  cities: PropTypes.array.isRequired
+};
 
 export default AutoCompleteContainer;

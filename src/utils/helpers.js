@@ -5,8 +5,7 @@ import cities from './cities';
 const trie = new Trie();
 trie.populate(cities.data);
 
-const helpers =
-{
+const helpers = {
   getCurrentTime() {
     const timezone = moment.tz.guess();
     const time = moment.tz(timezone).format('dddd, h:mma');
@@ -14,7 +13,10 @@ const helpers =
   },
 
   getDay(timestamp) {
-    return moment.unix(timestamp).format('ddd').toUpperCase();
+    return moment
+      .unix(timestamp)
+      .format('ddd')
+      .toUpperCase();
   },
 
   filterCities(input) {
@@ -29,19 +31,18 @@ const helpers =
     const formattedCity = this._toTitleCase(city);
 
     if (state) {
-     const formattedState = state.toUpperCase();
-     return `${formattedCity}, ${formattedState}`;
+      const formattedState = state.toUpperCase();
+      return `${formattedCity}, ${formattedState}`;
     }
 
     return formattedCity;
   },
 
   _toTitleCase(city) {
-    const titleCased =
-      city
+    const titleCased = city
       .split(' ')
-      .map((word) => {
-        return (word === '') ? '' : word[0].toUpperCase() + word.slice(1);
+      .map(word => {
+        return word === '' ? '' : word[0].toUpperCase() + word.slice(1);
       })
       .join(' ');
     return titleCased;

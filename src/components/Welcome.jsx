@@ -11,7 +11,7 @@ class Welcome extends React.Component {
 
     this.state = {
       inputCity: null,
-      suggestedCities: null,
+      suggestedCities: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +26,7 @@ class Welcome extends React.Component {
       if (inputCity) {
         try {
           filteredCities = helpers.filterCities(inputCity);
-        } catch(err) {
+        } catch (err) {
           console.warn(err);
           filteredCities = err;
         }
@@ -34,12 +34,10 @@ class Welcome extends React.Component {
         filteredCities = null;
       }
 
-      return (
-        {
-          inputCity,
-          suggestedCities: filteredCities,
-        }
-      )
+      return {
+        inputCity,
+        suggestedCities: filteredCities
+      };
     });
   }
 
@@ -49,24 +47,12 @@ class Welcome extends React.Component {
 
     return (
       <Container>
-        <Header>
-          Weather Info For Your Favorite Cities
-        </Header>
-        <Subscript>
-          Never have an unprepared day.
-        </Subscript>
-        <SearchContainer
-          city={inputCity}
-          onChange={this.handleChange}
-        />
-        {inputCity && suggestedCities &&
-          <AutoCompleteContainer
-            city={inputCity} 
-            cities={suggestedCities}
-          />
-        }
+        <Header>Weather Info For Your Favorite Cities</Header>
+        <Subscript>Never have an unprepared day.</Subscript>
+        <SearchContainer city={inputCity} onChange={this.handleChange} />
+        {inputCity && suggestedCities && <AutoCompleteContainer city={inputCity} cities={suggestedCities} />}
       </Container>
-    )
+    );
   }
 }
 
@@ -75,18 +61,18 @@ const Container = styled.div`
   width: 800px;
   opacity: 0;
   animation: 1200ms ${fadeInUp} 400ms forwards;
-`
+`;
 
 const Header = styled.div`
   font-size: 2.5rem;
   text-align: center;
-`
+`;
 
 const Subscript = styled.div`
   text-align: center;
   font-size: 1.5rem;
   font-weight: 300;
   margin-top: 3rem;
-`
+`;
 
 export default Welcome;

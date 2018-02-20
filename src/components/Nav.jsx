@@ -6,16 +6,18 @@ import styled from 'styled-components';
 function Nav() {
   return (
     <Container>
-      <NavLink to='/' className='Nav__header'>
+      <NavLink to="/" className="Nav__header">
         Weather.io
       </NavLink>
-      <ul className='Nav__list'>
-        <NavLink to='/' className='Nav__home'>Home</NavLink>
+      <ul className="Nav__list">
+        <NavLink to="/" className="Nav__home">
+          Home
+        </NavLink>
         <li>Sign In</li>
-        <li className='Nav__button'>Sign Up Free</li>
+        <li className="Nav__button">Sign Up Free</li>
       </ul>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
@@ -26,6 +28,6 @@ const Container = styled.div`
   align-items: center;
   opacity: 0;
   animation: 1000ms ${fadeIn} ease-in 600ms forwards;
-`
+`;
 
 export default Nav;

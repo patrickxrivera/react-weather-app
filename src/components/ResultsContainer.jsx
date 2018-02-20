@@ -17,7 +17,7 @@ class ResultsContainer extends React.Component {
       clouds: null,
       description: null,
       forecasts: null,
-      selected: 'current weather',
+      selected: 'current weather'
     };
 
     this.updateCurrentWeather = this.updateCurrentWeather.bind(this);
@@ -33,23 +33,18 @@ class ResultsContainer extends React.Component {
   }
 
   updateCurrentWeather() {
-
-    api
-    .fetchCurrentWeather(this.state.city)
-    .then((response) => {
+    api.fetchCurrentWeather(this.state.city).then((response) => {
       const [city, currentTemp, high, low, wind, clouds, description] = response;
       this.setState(() => {
-        return (
-          {
-            city,
-            currentTemp,
-            high,
-            low,
-            wind,
-            clouds,
-            description,
-          }
-        )
+        return {
+          city,
+          currentTemp,
+          high,
+          low,
+          wind,
+          clouds,
+          description
+        };
       });
     });
   }
@@ -57,23 +52,21 @@ class ResultsContainer extends React.Component {
   updateCurrentTime() {
     const time = helpers.getCurrentTime();
     this.setState(() => {
-      return { time }
+      return { time };
     });
   }
 
   updateForecasts() {
-    api
-    .fetchForecasts(this.state.city)
-    .then((forecasts) => {
+    api.fetchForecasts(this.state.city).then((forecasts) => {
       this.setState(() => {
-        return { forecasts }
+        return { forecasts };
       });
     });
   }
 
   handleClick(selected) {
     this.setState(() => {
-      return ({ selected })
+      return { selected };
     });
   }
 
@@ -103,7 +96,7 @@ class ResultsContainer extends React.Component {
         selected={selected}
         handleClick={this.handleClick}
       />
-    )
+    );
   }
 }
 

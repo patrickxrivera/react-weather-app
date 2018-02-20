@@ -1,11 +1,4 @@
-import {
-         has,
-         toArray,
-         isEnd,
-         removeLastChar,
-         doesNotExist,
-         sort,
-} from './Helpers';
+import { has, toArray, isEnd, removeLastChar, doesNotExist, sort } from './Helpers';
 
 class Trie {
   constructor() {
@@ -21,7 +14,7 @@ class Trie {
     let currNode = this.words;
     const arrayOfLetters = toArray(word);
 
-    arrayOfLetters.forEach((letter) => {
+    arrayOfLetters.forEach(letter => {
       if (!has.call(currNode, letter)) {
         currNode[letter] = {};
       }
@@ -54,7 +47,7 @@ class Trie {
     let currNode = this.words;
     const arrayOfLetters = toArray(word);
 
-    arrayOfLetters.forEach((letter) => {
+    arrayOfLetters.forEach(letter => {
       let data = [currNode, letter, word];
       currNode = this._getNextNodeFrom(data);
     });
@@ -65,19 +58,19 @@ class Trie {
   _getNextNodeFrom(data) {
     let [currNode, letter, word] = data;
 
-     if (doesNotExist(currNode, letter)) {
-       this._handleError(word);
-     }
+    if (doesNotExist(currNode, letter)) {
+      this._handleError(word);
+    }
 
     const nextNode = currNode[letter];
     return nextNode;
   }
 
-  _traverse(startNode, prefix, arr=[]) {
+  _traverse(startNode, prefix, arr = []) {
     if (isEnd(startNode)) {
       let selectionCount = startNode;
       let word = removeLastChar(prefix);
-      return {word, selectionCount};
+      return { word, selectionCount };
     }
 
     for (let key in startNode) {
