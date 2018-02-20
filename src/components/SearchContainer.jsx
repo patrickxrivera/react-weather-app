@@ -29,11 +29,11 @@ class SearchContainer extends React.Component {
   render() {
     const fireRedirect = this.state.fireRedirect;
     const city = this.props.city;
-
-    const routeData = {
-      pathname: '/results',
-      state: city,
-    }
+    const routeData =
+      {
+        pathname: '/results',
+        state: city,
+      };
 
     return (
       <div>

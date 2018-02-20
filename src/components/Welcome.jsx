@@ -21,7 +21,18 @@ class Welcome extends React.Component {
     const inputCity = e.target.value;
 
     this.setState(() => {
-      const filteredCities = helpers.filterCities(inputCity);
+      let filteredCities;
+
+      if (inputCity) {
+        try {
+          filteredCities = helpers.filterCities(inputCity);
+        } catch(err) {
+          console.warn(err);
+          filteredCities = err;
+        }
+      } else {
+        filteredCities = null;
+      }
 
       return (
         {
@@ -49,7 +60,11 @@ class Welcome extends React.Component {
           onChange={this.handleChange}
         />
         {inputCity && suggestedCities &&
-          <AutoCompleteContainer cities={suggestedCities} />}
+          <AutoCompleteContainer
+            city={inputCity} 
+            cities={suggestedCities}
+          />
+        }
       </Container>
     )
   }

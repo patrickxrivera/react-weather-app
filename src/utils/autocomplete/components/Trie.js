@@ -92,7 +92,7 @@ class Trie {
   }
 
   _handleError(word) {
-    throw new Error(`Sorry, we don't have "${word}" in our database.`);
+    throw new Error(`"${word}" not found. Please try again :)`);
   }
 }
 

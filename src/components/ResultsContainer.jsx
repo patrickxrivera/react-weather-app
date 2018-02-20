@@ -63,7 +63,7 @@ class ResultsContainer extends React.Component {
 
   updateForecasts() {
     api
-    .fetchForecasts()
+    .fetchForecasts(this.state.city)
     .then((forecasts) => {
       this.setState(() => {
         return { forecasts }

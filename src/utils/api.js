@@ -32,8 +32,8 @@ const api = {
            });
   },
 
-  fetchForecasts() {
-    const url = `${baseUrl}forecast/daily?q=${this.city}${urlSettings}`;
+  fetchForecasts(city) {
+    const url = `${baseUrl}forecast/daily?q=${city}${urlSettings}`;
 
     return axios
            .get(url)
